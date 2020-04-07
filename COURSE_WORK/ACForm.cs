@@ -12,7 +12,6 @@ using System.Windows.Forms;
 namespace COURSE_WORK {
     public partial class ACForm : Form {
         private List<Control> allComponents = new List<Control>();
-
         private Ticket mutableTicket = null;
 
         public ACForm() {
@@ -72,7 +71,6 @@ namespace COURSE_WORK {
         private void MonthCalendar1_DateChanged(object sender, DateRangeEventArgs e) {
             dateOfBirth.Text = e.End.ToShortDateString();
         }
-
 
         private void change() {
             if (mutableTicket != null) {

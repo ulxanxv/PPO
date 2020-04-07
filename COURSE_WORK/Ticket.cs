@@ -39,6 +39,7 @@ public class Ticket {
             return gender == 0 ? "Мужской" : "Женский";
         }
     }
+
     public Ticket(string uniqNumber) {
         this.Serial = uniqNumber.Split(' ')[0].Trim();
         this.Number = uniqNumber.Split(' ')[1].Trim();
