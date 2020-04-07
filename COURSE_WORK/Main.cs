@@ -16,7 +16,7 @@ namespace COURSE_WORK {
             InitializeComponent();
 
             // Загрузка базы данных
-            textBox1.Text = WWS.loadData();
+            someMessage.Text = WWS.loadData();
 
             // Автоматическая генерация столбцов
             dataGridView1.AutoGenerateColumns = true;
@@ -75,9 +75,9 @@ namespace COURSE_WORK {
 
         private void delete() {
             if (WWS.tickets.Remove(findElement(deleteField.Text))) {
-                textBox1.Text = "Запись удалена";
+                someMessage.Text = "Запись удалена";
             } else {
-                textBox1.Text = "Запись не найдена";
+                someMessage.Text = "Запись не найдена";
             }
         }
 

@@ -31,7 +31,7 @@
             this.realNameWork = new System.Windows.Forms.ToolStripLabel();
             this.deleteButton = new System.Windows.Forms.Button();
             this.openNewWindowButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.someMessage = new System.Windows.Forms.TextBox();
             this.nameOfProgram = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.saveButton = new System.Windows.Forms.Button();
@@ -102,18 +102,18 @@
             this.openNewWindowButton.Text = "Добавить или изменить";
             this.openNewWindowButton.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // someMessage
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(168, 69);
-            this.textBox1.MaxLength = 64;
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBox1.Size = new System.Drawing.Size(250, 35);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.someMessage.Enabled = false;
+            this.someMessage.Location = new System.Drawing.Point(168, 69);
+            this.someMessage.MaxLength = 64;
+            this.someMessage.Multiline = true;
+            this.someMessage.Name = "someMessage";
+            this.someMessage.ReadOnly = true;
+            this.someMessage.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.someMessage.Size = new System.Drawing.Size(250, 35);
+            this.someMessage.TabIndex = 4;
+            this.someMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // nameOfProgram
             // 
@@ -172,7 +172,7 @@
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.nameOfProgram);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.someMessage);
             this.Controls.Add(this.openNewWindowButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.toolStrip1);
@@ -199,7 +199,7 @@
         private System.Windows.Forms.ToolStripLabel realNameWork;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button openNewWindowButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox someMessage;
         private System.Windows.Forms.Label nameOfProgram;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button saveButton;
