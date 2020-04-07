@@ -39,19 +39,26 @@ namespace COURSE_WORK {
             dataGridView1.Columns[11].HeaderText = "Пол";
 
             // Удалить
-            button1.Click += Button1_Click;
+            deleteButton.Click += Delete_Click;
 
             // Добавить или изменить
-            button2.Click += Button2_Click;
+            openNewWindowButton.Click += OpenNewWindow_Click;
 
             // Сохранить
-            button3.Click += Button3_Click;
+            saveButton.Click += Save_Click;
 
             // Нумерация строк
             dataGridView1.RowPrePaint += DataGridView1_RowPrePaint;
         }
 
-        private void Button3_Click(object sender, EventArgs e) {
+        private void Delete_Click(object sender, EventArgs e) {
+            delete();
+        }
+
+        private void OpenNewWindow_Click(object sender, EventArgs e) {
+            new ACForm().Show();
+        }
+        private void Save_Click(object sender, EventArgs e) {
             saveFile();
         }
 
@@ -66,24 +73,15 @@ namespace COURSE_WORK {
                 this.dataGridView1.Rows[index].HeaderCell.Value = indexStr;
         }
 
-        private void Button1_Click(object sender, EventArgs e) {
-            delete();
-        }
-
-        private void Button2_Click(object sender, EventArgs e) {
-            new ACForm().Show();
-        }
-
         private void delete() {
-            if (WWS.tickets.Remove(findElement(maskedTextBox1.Text))) {
+            if (WWS.tickets.Remove(findElement(deleteField.Text))) {
                 textBox1.Text = "Запись удалена";
             } else {
                 textBox1.Text = "Запись не найдена";
             }
         }
 
-        private Ticket findElement(string uniqNumber)
-        {
+        private Ticket findElement(string uniqNumber) {
             Ticket search = new Ticket(uniqNumber);
 
             foreach (Ticket x in WWS.tickets) {

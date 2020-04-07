@@ -19,60 +19,60 @@ namespace COURSE_WORK {
             InitializeComponent();
 
             // Значение по умолчанию
-            comboBox1.SelectedIndex = 0;
-            comboBox2.SelectedIndex = 0;
+            document.SelectedIndex = 0;
+            gender.SelectedIndex = 0;
 
             // Установка даты по умолчанию
-            textBox6.Text = DateTime.Now.ToShortDateString();
+            dateOfBirth.Text = DateTime.Now.ToShortDateString();
 
             // Добавление всех компонентов в единый список для более удобной навигации
-            allComponents.Add(maskedTextBox1); // Серия и номер паспорта
-            allComponents.Add(textBox1);       // Откуда
-            allComponents.Add(textBox2);       // Куда
-            allComponents.Add(maskedTextBox2); // Время
-            allComponents.Add(comboBox1);      // Документы
-            allComponents.Add(textBox3);       // Имя
-            allComponents.Add(textBox4);       // Фамилия
-            allComponents.Add(textBox5);       // Отчество
-            allComponents.Add(textBox6);       // Дата рождения
-            allComponents.Add(numericUpDown1); // Место
-            allComponents.Add(comboBox2);      // Пол
+            allComponents.Add(serialAndNumberOfPassport); // Серия и номер паспорта
+            allComponents.Add(from);       // Откуда
+            allComponents.Add(to);       // Куда
+            allComponents.Add(time); // Время
+            allComponents.Add(document);      // Документы
+            allComponents.Add(firstName);       // Имя
+            allComponents.Add(lastName);       // Фамилия
+            allComponents.Add(middleName);       // Отчество
+            allComponents.Add(dateOfBirth);       // Дата рождения
+            allComponents.Add(place); // Место
+            allComponents.Add(gender);      // Пол
 
             // Добавить в базу данных
-            button1.Click += Button1_Click;
+            addButton.Click += AddToDataBase_Click;
 
             // Изменить позицию
-            button2.Click += Button2_Click;
+            changeButton.Click += ChangeInDataBase_Click;
 
             // Сохранить
-            button3.Click += Button3_Click;
+            saveButton.Click += SaveButton_Click;
 
             // Найти
-            button4.Click += Button4_Click;
+            findButton.Click += FindButton_Click;
 
             // Изменение даты рождения
             monthCalendar1.DateChanged += MonthCalendar1_DateChanged;
         }
 
-        private void Button4_Click(object sender, EventArgs e) {
-            outputInForm(findElement(maskedTextBox3.Text));
+        private void FindButton_Click(object sender, EventArgs e) {
+            outputInForm(findElement(findField.Text));
         }
 
-        private void Button3_Click(object sender, EventArgs e) {
+        private void SaveButton_Click(object sender, EventArgs e) {
             saveFile();
         }
-
-        private void MonthCalendar1_DateChanged(object sender, DateRangeEventArgs e) {
-            textBox6.Text = e.End.ToShortDateString();
-        }
-
-        private void Button2_Click(object sender, EventArgs e) {
+        private void ChangeInDataBase_Click(object sender, EventArgs e) {
             change();
         }
 
-        private void Button1_Click(object sender, EventArgs e) {
+        private void AddToDataBase_Click(object sender, EventArgs e) {
             add();
         }
+
+        private void MonthCalendar1_DateChanged(object sender, DateRangeEventArgs e) {
+            dateOfBirth.Text = e.End.ToShortDateString();
+        }
+
 
         private void change() {
             if (mutableTicket != null) {
@@ -85,20 +85,20 @@ namespace COURSE_WORK {
                     // Удаляем старую
                     WWS.tickets.Remove(mutableTicket);
 
-                    textBox7.Text = "Элемент изменен!";
+                    someMessage.Text = "Элемент изменен!";
 
                     mutableTicket = null;
                 } else {
-                    textBox7.Text = "Проверьте правильность полей!";
+                    someMessage.Text = "Проверьте правильность полей!";
                 }
             } else {
-                textBox7.Text = "Сначала воспользутесь поиском и найдите элемент!";
+                someMessage.Text = "Сначала воспользутесь поиском и найдите элемент!";
             }
         }
 
         private bool add() {
             // Проверка доступности выбранного места
-            if (!WWS.places.Contains((int)numericUpDown1.Value)) {
+            if (!WWS.places.Contains((int)place.Value)) {
                 // Проверка правильности полей
                 if (correct()) {
                     // Если место доступно, то сформировать входную строку для передачи в конструктор обьекта класса Ticket
@@ -110,12 +110,12 @@ namespace COURSE_WORK {
                         // Добавляем место данного человека в список занятых мест (место свободно, так как проверка была выше)
                         WWS.places.Add(newTicket.Place);
                     } else {
-                        textBox7.Text = "Такой человек уже есть!";
+                        someMessage.Text = "Такой человек уже есть!";
                         return false;
                     }
                 }
             } else {
-                textBox7.Text = "Место уже занято";
+                someMessage.Text = "Место уже занято";
                 return false;
             }
 
@@ -136,38 +136,38 @@ namespace COURSE_WORK {
         // Вывести данные в форму (касаемо кнопки 'Найти')
         private void outputInForm(Ticket ticket) {
             if (ticket != null) {
-                textBox7.Text = "Запись найдена!";
+                someMessage.Text = "Запись найдена!";
 
                 string[] outputText = ticket.ToString().Split(';');
 
-                maskedTextBox1.Text = outputText[0] + outputText[1];
-                textBox1.Text = outputText[2];
-                textBox2.Text = outputText[3];
-                maskedTextBox2.Text = outputText[4];
+                serialAndNumberOfPassport.Text = outputText[0] + outputText[1];
+                from.Text = outputText[2];
+                to.Text = outputText[3];
+                time.Text = outputText[4];
 
                 switch (outputText[5]) {
                     case "Загранпаспорт РФ":
-                        comboBox1.SelectedIndex = 0;
+                        document.SelectedIndex = 0;
                         break;
                     case "Иностранный документ":
-                        comboBox1.SelectedIndex = 1;
+                        document.SelectedIndex = 1;
                         break;
                     case "Паспорт РФ":
-                        comboBox1.SelectedIndex = 2;
+                        document.SelectedIndex = 2;
                         break;
                     case "Свидетельство о рождении":
-                        comboBox1.SelectedIndex = 3;
+                        document.SelectedIndex = 3;
                         break;
                 }
 
-                textBox3.Text = outputText[6];
-                textBox4.Text = outputText[7];
-                textBox5.Text = outputText[8];
-                textBox6.Text = outputText[9];
+                firstName.Text = outputText[6];
+                lastName.Text = outputText[7];
+                middleName.Text = outputText[8];
+                dateOfBirth.Text = outputText[9];
 
-                numericUpDown1.Text = outputText[10];
+                place.Text = outputText[10];
 
-                comboBox2.SelectedIndex = outputText[11].Trim() == "Мужской" ? 0 : 1;
+                gender.SelectedIndex = outputText[11].Trim() == "Мужской" ? 0 : 1;
 
                 mutableTicket = ticket;
 
@@ -176,7 +176,7 @@ namespace COURSE_WORK {
 
             mutableTicket = null;
 
-            textBox7.Text = "Запись не найдена!";
+            someMessage.Text = "Запись не найдена!";
         }
 
         // Получения полноценной информации о билете 
@@ -206,7 +206,7 @@ namespace COURSE_WORK {
                 return true;
 
             } catch (IOException io) {
-                textBox7.Text = "Ошибка! " + io.Message;
+                someMessage.Text = "Ошибка! " + io.Message;
                 return false;
             }
         }
@@ -215,21 +215,21 @@ namespace COURSE_WORK {
         private bool correct() {
             int x = 0, y = 0;
             try {
-                x = Convert.ToInt32(maskedTextBox2.Text.Split(':')[0]);
-                y = Convert.ToInt32(maskedTextBox2.Text.Split(':')[1]);
+                x = Convert.ToInt32(time.Text.Split(':')[0]);
+                y = Convert.ToInt32(time.Text.Split(':')[1]);
             } catch (FormatException) {
-                textBox7.Text = "Проверьте поле \"Время\"";
+                someMessage.Text = "Проверьте поле \"Время\"";
                 return false;
             }
 
-            if (textBox1.Text.Length == 0 || textBox2.Text.Length == 0 || textBox3.Text.Length == 0 || textBox4.Text.Length == 0 || textBox5.Text.Length == 0) {
-                textBox7.Text = "Проверьте правильность введенных данных";
+            if (from.Text.Length == 0 || to.Text.Length == 0 || firstName.Text.Length == 0 || lastName.Text.Length == 0 || middleName.Text.Length == 0) {
+                someMessage.Text = "Проверьте правильность введенных данных";
                 return false;
             } else if (x > 23 || y > 59) {
-                textBox7.Text = "Проверьте правильность поля \"Время\"";
+                someMessage.Text = "Проверьте правильность поля \"Время\"";
                 return false;
-            } else if (maskedTextBox1.Text.Length < 11) {
-                textBox7.Text = "Проверьте правильность поля \"Серия и номер паспорта\"";
+            } else if (serialAndNumberOfPassport.Text.Length < 11) {
+                someMessage.Text = "Проверьте правильность поля \"Серия и номер паспорта\"";
                 return false;
             } else {
                 return true;
