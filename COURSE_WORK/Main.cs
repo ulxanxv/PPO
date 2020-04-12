@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace COURSE_WORK {
@@ -68,8 +60,9 @@ namespace COURSE_WORK {
             string indexStr = index.ToString();
 
             object header = this.dataGridView1.Rows[index].HeaderCell.Value;
-            if (header == null || !header.Equals(indexStr))
+            if (header == null || !header.Equals(indexStr)) {
                 this.dataGridView1.Rows[index].HeaderCell.Value = indexStr;
+            }
         }
 
         private void delete() {
@@ -85,9 +78,7 @@ namespace COURSE_WORK {
 
             foreach (Ticket x in WWS.tickets) {
                 if (x.Equals(search)) return x;
-            }
-
-            return null;
+            } return null;
         }
 
         private void saveFile() {
@@ -98,9 +89,7 @@ namespace COURSE_WORK {
                 changeText[4] = ' ';
 
                 readyText += new string(changeText);
-            }
-
-            File.WriteAllText(WWS.path, readyText);
+            } File.WriteAllText(WWS.path, readyText);
         }
     }
 }

@@ -21,8 +21,7 @@ abstract class WWS {
 
                 tickets.Add(ticket);
                 places.Add(ticket.Place);
-            }
-            return "База данных загружена в программу";
+            } return "База данных загружена в программу";
         }
     }
 }
