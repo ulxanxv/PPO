@@ -60,6 +60,7 @@ namespace COURSE_WORK {
         private void SaveButton_Click(object sender, EventArgs e) {
             saveFile();
         }
+
         private void ChangeInDataBase_Click(object sender, EventArgs e) {
             change();
         }
@@ -107,17 +108,21 @@ namespace COURSE_WORK {
                         WWS.tickets.Add(newTicket);
                         // Добавляем место данного человека в список занятых мест (место свободно, так как проверка была выше)
                         WWS.places.Add(newTicket.Place);
-                    } else {
+
+                        someMessage.Text = "Запись успешно добавлена!";
+                        return true;
+                    }
+                    else {
                         someMessage.Text = "Такой человек уже есть!";
                         return false;
                     }
+                } else {
+                    return false;
                 }
             } else {
                 someMessage.Text = "Место уже занято";
                 return false;
             }
-
-            return false;
         }
 
         // Найти запись по серии и номеру паспорта

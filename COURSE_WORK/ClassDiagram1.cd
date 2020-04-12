@@ -3,17 +3,17 @@
   <Class Name="COURSE_WORK.ACForm">
     <Position X="9.25" Y="0.5" Width="1.5" />
     <Compartments>
-      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>cCAAAEkBASAAABCSAECAAhBCJEA8cAgAEggAAAgCAAA=</HashCode>
+      <HashCode>FCBBAEsBAWBBgBACANCAopgCUAIcQABAgkgACBwCABA=</HashCode>
       <FileName>ACForm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="COURSE_WORK.Main">
     <Position X="11.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAkAACAAABAAAECAAQACBAg8cAAAEAIAAAAAAAA=</HashCode>
+      <HashCode>AAQAAA0EACAABAAAAECgAwACBCwcACAAAAIAABAAAAE=</HashCode>
       <FileName>Main.cs</FileName>
     </TypeIdentifier>
   </Class>

@@ -20,7 +20,6 @@ namespace COURSE_WORK {
 
             // Автоматическая генерация столбцов
             dataGridView1.AutoGenerateColumns = true;
-
             // Привязка источника данных
             dataGridView1.DataSource = WWS.tickets;
 
